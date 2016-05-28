@@ -44,12 +44,12 @@ spiderWeb = mconcat (map (regPoly 7) [1..5])
 to_3_char_string i =
   reverse (take 3 (reverse (show i) <> repeat '0'))
 
-renderThis i dollar =
+renderThis i handmadeDollar =
   if i >= 60
   then return ()
   else do
-    renderSVG ("/tmp/foo" <> to_3_char_string i <> ".svg") (dims (r2 (600,400))) $ ((dollar # rotateBy (1 / 60)) <> regPoly 7 3 # fc blue) ||| fromOffsets [r2 (1,1),r2 (1,0),r2 (1/2,1/2)] # strokeLine # lc black # lwL 0.3
-    renderThis (i + 1) (dollar # rotateBy (1/60))
+    renderSVG ("/tmp/foo" <> to_3_char_string i <> ".svg") (dims (r2 (600,400))) $ ((handmadeDollar # rotateBy (1 / 60)) <> regPoly 7 3 # fc blue) ||| fromOffsets [r2 (1,1),r2 (1,0),r2 (1/2,1/2)] # strokeLine # lc black # lwL 0.3
+    renderThis (i + 1) (handmadeDollar # rotateBy (1/60))
 
 main :: IO ()
-main = mainWith handmadeDollar
+main = renderThis 0 handmadeDollar
