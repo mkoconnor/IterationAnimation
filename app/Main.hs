@@ -26,4 +26,4 @@ to_3_char_string i =
   reverse (take 3 (reverse (show i) <> repeat '0'))
 
 main :: IO ()
-main = mainWith handmadeDollar
+main = gifMain $ map (\i -> (handmadeDollar # rotateBy (fromIntegral i / 60), 1)) [0..120]
