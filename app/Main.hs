@@ -11,10 +11,10 @@ import Diagrams.Backend.SVG.CmdLine
 -- example :: Diagram B
 
 dollar = do
-   result <- loadImageEmb "/Users/michaeloconnor/Downloads/banknote.png"
+   result <- loadImageEmb "/Users/michaeloconnor/Downloads/100-dollar-bill.png"
    return $ case result of
      Left err -> error err
-     Right x -> image x
+     Right x -> image x # scale 0.1
 
 -- dollar = loadImageSVG "/Users/michaeloconnor/Downloads/banknote.svg"
 
